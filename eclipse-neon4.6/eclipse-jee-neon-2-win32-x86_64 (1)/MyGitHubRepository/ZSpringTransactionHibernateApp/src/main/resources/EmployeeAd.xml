@@ -5,7 +5,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
-
+  
+	 <!-- JDBC DataSource bean definition -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -15,7 +16,7 @@
 	</bean>
 
 
-<!-- Hibernate 4 SessionFactory Bean definition -->
+<!-- Hibernate 4 SessionFactory Bean definition. this is what IOC about the setSessionFactory method will inject the bean into class -->
  <bean id="hibernate4AnnotatedSessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -41,8 +42,9 @@
 	<!-- add the transactionManager been here you take it off and still works  -->
 	 <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 	
+	<!-- enable the configuration of transactional behavior based on annotations -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
-	
+	<!-- Hibernate Transaction manager been definition here  -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</bean>
