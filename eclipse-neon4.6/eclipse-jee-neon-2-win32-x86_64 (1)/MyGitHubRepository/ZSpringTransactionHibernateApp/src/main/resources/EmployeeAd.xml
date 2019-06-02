@@ -34,7 +34,7 @@
 			</props>
 		</property>
 	</bean> 
-	
+	<!-- this is the service object that we want to make transactional -->
 	<bean id="employeeAdDao" 
          class="com.app.dao.EmployeeAdDaoImple">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
