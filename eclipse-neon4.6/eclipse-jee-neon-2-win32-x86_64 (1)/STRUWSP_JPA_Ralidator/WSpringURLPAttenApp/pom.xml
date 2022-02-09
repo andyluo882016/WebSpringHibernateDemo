@@ -14,7 +14,7 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 		<org.aspectj-version>1.7.4</org.aspectj-version>
 		 <jdk.version>1.7</jdk.version>
-		<hibernate.version>4.3.5.Final</hibernate.version>
+		<hibernate.version>5.4.24.Final</hibernate.version>
 		<jackson.databind-version>2.6.2</jackson.databind-version>
 	</properties>
 	<dependencies>
